@@ -1,2 +1,2 @@
 # Learning-OpenGL
-Just little projects which I made wile learning OpenGL. Nothin special.
+Just little projects that I made wile learning OpenGL. Nothin special.

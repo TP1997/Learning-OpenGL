@@ -1,0 +1,54 @@
+#ifndef CAMERA_H_INCLUDED
+#define CAMERA_H_INCLUDED
+
+#include <GL/glew.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+#include <vector>
+
+enum Camera_Movement{
+    FORWARD,
+    BACKWARD,
+    LEFT,
+    RIGHT
+};
+
+const float YAW=-90.0f;
+const float PITCH=0.0f;
+const float SPEED=2.5f;
+const float SENSITIVITY=0.05f;
+const float ZOOM=45.0f;
+
+class Camera{
+    public:
+
+    glm::vec3 Position;
+    glm::vec3 Front;
+    glm::vec3 Up;
+    glm::vec3 Right;
+    glm::vec3 WorldUp;
+
+    float Yaw;
+    float Pitch;
+
+    float MovementSpeed;
+    float MouseSensitivity;
+    float Zoom;
+
+    Camera(glm::vec3, glm::vec3, float, float);
+    Camera(float, float, float, float, float, float, float, float);
+
+    glm::mat4 GetViewMatrix();
+    void ProcessKeyboard(Camera_Movement, float);
+    void ProcessMouseMovement(float, float, GLboolean);
+    void ProcessMouseScroll(float);
+
+    private:
+    void updateCameraVectors();
+
+
+
+};
+
+#endif // CAMERA_H_INCLUDED
